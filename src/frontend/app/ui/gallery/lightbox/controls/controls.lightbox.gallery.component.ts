@@ -221,6 +221,13 @@ export class ControlsLightboxComponent implements OnDestroy, OnInit, OnChanges {
   @HostListener('window:keydown', ['$event'])
   onKeyPress(event: KeyboardEvent): void {
     switch (event.key) {
+      case ' ':
+        if (this.slideShowRunning) {
+          this.togglePlayback.emit(false);
+        } else {
+          this.togglePlayback.emit(true);
+        }
+        break;
       case 'ArrowLeft':
         if (this.navigation.hasPrev) {
           this.previousPhoto.emit();
