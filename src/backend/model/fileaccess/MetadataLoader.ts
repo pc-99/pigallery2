@@ -360,7 +360,7 @@ export class MetadataLoader {
   }
 
   private static mapCaption(metadata: PhotoMetadata, exif: any) {
-    metadata.caption = exif.dc?.description?.value || Utils.asciiToUTF8(exif.iptc?.Caption) || metadata.caption || exif.ifd0?.ImageDescription || exif.exif?.UserComment?.value || exif.Iptc4xmpCore?.ExtDescrAccessibility?.value ||exif.acdsee?.notes;
+    metadata.caption = exif.dc?.description?.value || Utils.asciiToUTF8(exif.iptc?.Caption) || metadata.caption || exif.ifd0?.ImageDescription || exif.exif?.UserComment?.value || exif.Iptc4xmpCore?.ExtDescrAccessibility?.value ||exif.acdsee?.notes || exif.ihdr?.parameters;
   }
 
   private static mapTimestampAndOffset(metadata: PhotoMetadata, exif: any) {
