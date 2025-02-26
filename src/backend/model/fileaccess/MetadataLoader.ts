@@ -360,7 +360,7 @@ export class MetadataLoader {
   }
 
   private static mapCaption(metadata: PhotoMetadata, exif: any) {
-    metadata.caption = exif.dc?.description?.value || Utils.asciiToUTF8(exif.iptc?.Caption) || metadata.caption || exif.ifd0?.ImageDescription || exif.exif?.UserComment?.value || exif.Iptc4xmpCore?.ExtDescrAccessibility?.value ||exif.acdsee?.notes || exif.ihdr?.parameters;
+    metadata.caption = exif.dc?.description?.value || Utils.asciiToUTF8(exif.iptc?.Caption) || metadata.caption || exif.ifd0?.ImageDescription || exif.exif?.UserComment?.value || exif.Iptc4xmpCore?.ExtDescrAccessibility?.value ||exif.acdsee?.notes ;
   }
 
   private static mapTimestampAndOffset(metadata: PhotoMetadata, exif: any) {
@@ -433,7 +433,7 @@ export class MetadataLoader {
     metadata.cameraData = metadata.cameraData || {};
     metadata.cameraData.make = exif.ifd0?.Make || exif.tiff?.Make || metadata.cameraData.make;
 
-    metadata.cameraData.model = exif.ifd0?.Model || exif.tiff?.Model || metadata.cameraData.model;
+    metadata.cameraData.model = exif.ifd0?.Model || exif.tiff?.Model || metadata.cameraData.model || exif.ihdr?.parameters;
 
     metadata.cameraData.lens = exif.exif?.LensModel || exif.exifEX?.LensModel || metadata.cameraData.lens;
 

@@ -3,7 +3,7 @@
 FROM node:18-bullseye AS builder
 # LABEL maintainer="Patrik J. Braun"
 # copying only package{-lock}.json to make node_modules cachable
-RUN git clone https://github.com/bpatrik/pigallery2.git /build
+RUN git clone -b p-master https://github.com/pc-99/pigallery2.git /build
 WORKDIR /build
 RUN npm install --unsafe-perm \
     && mkdir -p /build/release/data/config \
