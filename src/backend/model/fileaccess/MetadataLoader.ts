@@ -436,6 +436,7 @@ export class MetadataLoader {
     metadata.cameraData.model = exif.ifd0?.Model || exif.tiff?.Model || metadata.cameraData.model ;
 
     metadata.cameraData.lens = exif.ihdr?.parameters || exif.ihdr?.prompt || exif.exif?.LensModel || exif.exifEX?.LensModel || metadata.cameraData.lens;
+    console.log("EXIF",exif)
 
     if (exif.exif) {
       if (Utils.isUInt32(exif.exif.ISO)) {
