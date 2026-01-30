@@ -433,9 +433,9 @@ export class MetadataLoader {
     metadata.cameraData = metadata.cameraData || {};
     metadata.cameraData.make = exif.ifd0?.Make || exif.tiff?.Make || metadata.cameraData.make;
 
-    metadata.cameraData.model = exif.ifd0?.Model || exif.tiff?.Model || metadata.cameraData.model || exif.ihdr?.parameters;
+    metadata.cameraData.model = exif.ifd0?.Model || exif.tiff?.Model || metadata.cameraData.model ;
 
-    metadata.cameraData.lens = exif.exif?.LensModel || exif.exifEX?.LensModel || metadata.cameraData.lens;
+    metadata.cameraData.lens = exif.ihdr?.parameters || exif.ihdr?.prompt || exif.exif?.LensModel || exif.exifEX?.LensModel || metadata.cameraData.lens;
 
     if (exif.exif) {
       if (Utils.isUInt32(exif.exif.ISO)) {
